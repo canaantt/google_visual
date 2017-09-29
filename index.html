@@ -1,0 +1,86 @@
+<html>
+<body>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+<div id="sankey_multiple" style="width: 900px; height: 300px;"></div>
+
+<script type="text/javascript">
+  google.charts.load("current", {packages:["sankey"]});
+  google.charts.setOnLoadCallback(drawChart);
+   function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'From');
+    data.addColumn('string', 'To');
+    data.addColumn('number', 'Weight');
+    data.addRows([
+       [ 'Biospecimens', 'Biospecimen Acquisition',  5],
+       [ 'Biospecimens', 'Molecular Profiling', 5 ],
+       [ 'Biospecimens', 'Data Dictionary', 5 ],
+       [ 'Biospecimens', 'Paired Data Abstraction', 5 ],
+       [ 'Biospecimens', 'Biospecimen Database',  5],
+       [ 'Biospecimens', 'Repository Utilization', 5 ],
+       [ 'Basic Science', 'Engagement', 5 ],
+       [ 'Translational Research', 'Translational Research Meeting', 5 ],
+       [ 'Translational Research', 'Mouse Models',  5],
+       [ 'Translational Research', 'Programmatic Grants', 5 ],
+       [ 'Translational Research', 'Therapeutic Development',  5],
+       [ 'Translational Research', 'INDs', 5 ],
+       [ 'Translational Research', '"Omics"',  5],
+       [ 'Clinical Research', 'Consenting Process', 5 ],
+       [ 'Clinical Research', 'Balanced Trial Portfolio', 5 ],
+       [ 'Clinical Research', 'IITs',  5],
+       [ 'Clinical Research', 'Study Support Staff', 5 ],
+       [ 'Clinical Research', 'CT Selection Process', 5 ],
+       [ 'Clinical Research', 'Patient Enrollment', 5 ],
+       [ 'Clinical Research', 'Study Start-Up', 5 ],
+       [ 'Clinical Research', 'Multidisciplinary Clinic', 5 ],
+       [ 'Broad Research Spectrum', 'Prevention', 5 ],
+       [ 'Broad Research Spectrum', 'Diagnostics', 5 ],
+       [ 'Broad Research Spectrum', 'Early Detection', 5 ],
+       [ 'Broad Research Spectrum', 'Treatment', 5],
+       [ 'Broad Research Spectrum', 'Survival', 5],
+       [ 'Personnel', 'Research Staff/Coordinator', 5 ],
+       [ 'Personnel', 'Junior Investigators', 5 ],
+       [ 'Personnel', 'Mid-level Investigators', 5 ],
+       [ 'Personnel', 'Senior Investigators',  5],
+       [ 'Personnel', 'Split Lab/Clinic', 5 ]
+    ]);
+
+    // Set chart options
+    // var options = {
+    //   width: 600,
+    // };
+    var colors = ['#a6cee3', '#b2df8a', '#fb9a99', '#fdbf6f',
+                  '#cab2d6', '#ffff99', '#33a02c'];
+
+    var options = {
+      height: 400,
+      width: 300,
+      sankey: {
+        node: {
+            label: {
+                fontName: 'PT Sans Narrow',
+                fontSize: 10,
+                color: '#000',
+                bold: false,
+                italic: false
+            },
+            width: 5,
+            colors: colors,
+            nodePadding: 10,
+            labelPadding: 0
+        },
+        link: {
+          colorMode: 'source',
+          colors: colors
+        }
+      }
+    };
+
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.Sankey(document.getElementById('sankey_multiple'));
+    chart.draw(data, options);
+   }
+</script>
+</body>
+</html>
